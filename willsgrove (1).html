@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Willsgrove Farm Enterprises | Fresh from Zimbabwe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .product-card {
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 30px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #166534;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+        }
+
+        .animate-pulse-slow {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .5;
+            }
+        }
+
+        .filter-btn.active {
+            background-color: #166534 !important;
+            color: white !important;
+            border-color: #166534 !important;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <!-- Top Bar -->
+    <div class="bg-emerald-900 text-white py-2 text-sm">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <span><i class="fa-regular fa-clock mr-1"></i> Mon-Sat: 7am - 6pm</span>
+                <span class="hidden md:inline"><i class="fa-solid fa-truck mr-1"></i> Free delivery over $50</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span><i class="fa-solid fa-phone mr-1"></i> +263 96 7391</span>
+                <span class="hidden sm:inline"><i class="fa-regular fa-envelope mr-1"></i> hello@willsgrove.co.zw</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="bg-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div
+                        class="w-12 h-12 bg-emerald-700 rounded-xl flex items-center justify-center text-2xl transform group-hover:rotate-12 transition-transform">
+                        🌾</div>
+                    <div>
+                        <span class="text-2xl font-bold text-emerald-900">Willsgrove</span>
+                        <span class="block text-xs text-emerald-600 tracking-wider">FARM ENTERPRISES</span>
+                    </div>
+                </a>
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-emerald-700 font-medium">Home</a>
+                    <a href="#boxes" class="nav-link text-gray-700 hover:text-emerald-700 font-medium">Shop Boxes</a>
+                    <a href="#produce" class="nav-link text-gray-700 hover:text-emerald-700 font-medium">Fresh
+                        Produce</a>
+                    <a href="#bakery" class="nav-link text-gray-700 hover:text-emerald-700 font-medium">Bakery</a>
+                    <a href="lattes.html" class="nav-link text-gray-700 hover:text-emerald-700 font-medium">Lattes</a>
+                    <a href="teas.html" class="nav-link text-gray-700 hover:text-emerald-700 font-medium">Teas</a>
+                    <a href="juices-shakes.html"
+                        class="nav-link text-gray-700 hover:text-emerald-700 font-medium">Juices</a>
+                    <a href="smoothies.html"
+                        class="nav-link text-gray-700 hover:text-emerald-700 font-medium">Smoothies</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-emerald-700 font-medium">About</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-emerald-700 font-medium">Contact</a>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <button onclick="toggleCart()" class="relative">
+                        <i
+                            class="fa-solid fa-cart-shopping text-2xl text-emerald-700 hover:text-emerald-800 transition-colors"></i>
+                        <span id="cart-count"
+                            class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
+                    </button>
+                    <button
+                        class="bg-emerald-700 hover:bg-emerald-800 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-lg hover:shadow-xl flex items-center gap-2">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <span class="hidden sm:inline">Order Now</span>
+                    </button>
+                    <button class="lg:hidden text-2xl text-emerald-700" onclick="toggleMobileMenu()">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t py-6 px-6">
+            <div class="flex flex-col space-y-4">
+                <a href="#home"
+                    class="py-2 text-gray-700 hover:text-emerald-700 font-medium border-b border-gray-100">Home</a>
+                <a href="#boxes"
+                    class="py-2 text-gray-700 hover:text-emerald-700 font-medium border-b border-gray-100">Shop
+                    Boxes</a>
+                <a href="#produce"
+                    class="py-2 text-gray-700 hover:text-emerald-700 font-medium border-b border-gray-100">Fresh
+                    Produce</a>
+                <a href="#bakery"
+                    class="py-2 text-gray-700 hover:text-emerald-700 font-medium border-b border-gray-100">Bakery</a>
+                <a href="lattes.html"
+                    class="py-2 text-gray-700 hover:text-emerald-700 font-medium border-b border-gray-100">Lattes</a>
+                <a href="teas.html"
+                    class="py-2 text-gray-700 hover:text-emerald-700 font-medium border-b border-gray-100">Teas</a>
+                <a href="juices-shakes.html"
+                    class="py-2 text-gray-700 hover:text-emerald-700 font-medium border-b border-gray-100">Juices</a>
+<a href="smoothies.html" class="py-2 text-gray-700 hover:text-emerald-700 font-medium border-b border-gray-100">Smoothies</a>
+                <a href="#about"
+                    class="py-2 text-gray-700 hover:text-emerald-700 font-medium border-b border-gray-100">About</a>
+                <a href="#contact" class="py-2 text-gray-700 hover:text-emerald-700 font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-[600px] overflow-hidden">
+        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+            <source
+                src="./AQPFVDgNJPqmHNK_99w2pCcRBXpAUAF6KcMchFUINsjmrzoMs2UMjVhB0GfMhrBvo3MbdoNyeV0rGrq09w0oiRqsEUMcKge5I0gsork.mp4"
+                type="video/mp4">
+        </video>
+        <div class="hero-overlay absolute inset-0"></div>
+        <div class="relative max-w-7xl mx-auto px-6 h-full flex items-center">
+            <div class="text-white max-w-3xl">
+                <div
+                    class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full text-sm mb-8">
+                    <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse-slow"></span> BULAWAYO • ZIMBABWE
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">Fresh From The<br>Farm To Your Door</h1>
+                <p class="text-xl md:text-2xl mb-10 text-gray-200 max-w-2xl">Supporting local farmers since 2018. Up to
+                    35% cheaper than supermarkets.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#boxes"
+                        class="bg-emerald-600 hover:bg-emerald-700 text-white px-10 py-5 rounded-full text-lg font-semibold transition-all shadow-xl flex items-center gap-3">
+                        <i class="fa-solid fa-box-open"></i> Shop Boxes
+                    </a>
+                    <a href="#produce"
+                        class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-10 py-5 rounded-full text-lg font-semibold transition-all flex items-center gap-3">
+                        <i class="fa-solid fa-leaf"></i> Browse Produce
+                    </a>
+                </div>
+                <div class="flex items-center gap-6 mt-16">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-truck-fast text-2xl"></i>
+                        <div>
+                            <div class="font-semibold">Free Delivery</div>
+                            <div class="text-sm text-gray-300">Orders over $50</div>
+                        </div>
+                    </div>
+                    <div class="h-8 w-px bg-white/30"></div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-leaf text-2xl"></i>
+                        <div>
+                            <div class="font-semibold">100% Fresh</div>
+                            <div class="text-sm text-gray-300">Picked daily</div>
+                        </div>
+                    </div>
+                    <div class="h-8 w-px bg-white/30 hidden md:block"></div>
+                    <div class="items-center gap-2 hidden md:flex">
+                        <div class="flex -space-x-2">
+                            <div
+                                class="w-8 h-8 bg-amber-400 rounded-full border-2 border-white flex items-center justify-center">
+                                🍎</div>
+                            <div
+                                class="w-8 h-8 bg-emerald-400 rounded-full border-2 border-white flex items-center justify-center">
+                                🥕</div>
+                        </div>
+                        <span class="text-sm">4.9/5 from 1,200+ reviews</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+
+    <!-- ===================== BAKERY & BEVERAGES SECTION ===================== -->
+    <section id="bakery" class="py-24 bg-white">
+
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-emerald-700 font-semibold uppercase tracking-wider text-sm">Freshly Brewed & Baked
+                    Daily</span>
+                <h2 class="text-5xl font-bold mt-3 text-gray-900">Bakery, Coffee & Shakes</h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Artisan breads, specialty coffee drinks, creamy
+                    milkshakes & fruit smoothies — straight from our menu</p>
+            </div>
+            <!-- Bakery Video Hero -->
+            <div class="relative mb-20 rounded-3xl overflow-hidden h-[400px] shadow-2xl">
+                <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+                    <source
+                        src="./AQPI7ZafqNmD8ChF_DfV2cFTGugqoT3x8sNWNxMp9LBGsIRFlccAcGlTh3QTZ9MtW1GxOF1TFVMOa6jD-wss7jB4.mp4"
+                        type="video/mp4">
+                </video>
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-12">
+                    <div>
+                        <h3 class="text-3xl font-bold text-white mb-4">Watch Our Baristas Craft Your Perfect Drink</h3>
+                        <p class="text-xl text-gray-200 max-w-lg">Freshly brewed coffee, blended smoothies, and artisan
+                            baked goods - all made with love daily</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coffee & Hot Drinks Section (Based on Image Menu) -->
+            <div class="mb-20">
+                <div class="flex items-center gap-4 mb-8 border-b border-emerald-100 pb-4">
+                    <i class="fa-solid fa-mug-hot text-3xl text-emerald-700"></i>
+                    <h3 class="text-3xl font-bold text-gray-800">☕ Hot & Iced Coffees</h3>
+                    <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full">Barista Specials</span>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+                    <!-- Americano -->
+                    <div onclick="addBeverageToCart('Americano', 2.00)"
+                        class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-200 shadow-sm hover:shadow-md">
+                        <img src="Americano.webp" alt="Americano" class="w-full h-28 object-cover">
+                        <div class="p-3 text-center">
+                            <div class="font-semibold text-gray-800">Americano</div>
+                            <div class="text-emerald-700 font-bold text-lg">$2.00</div>
+                            <div class="text-xs text-gray-500">Hot/Iced</div>
+                        </div>
+                    </div>
+                    <!-- Single Espresso -->
+                    <div onclick="addBeverageToCart('Single Espresso', 2.00)"
+                        class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-200 shadow-sm hover:shadow-md">
+                        <img src="espresso-e1729187531511_3b0fd15f-18aa-4d1a-9044-10d798af789d.webp"
+                            alt="Single Espresso" class="w-full h-28 object-cover">
+                        <div class="p-3 text-center">
+                            <div class="font-semibold text-gray-800">Single Espresso</div>
+                            <div class="text-emerald-700 font-bold text-lg">$2.00</div>
+                        </div>
+                    </div>
+                    <!-- Double Espresso -->
+                    <div onclick="addBeverageToCart('Double Espresso', 3.00)"
+                        class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-200 shadow-sm hover:shadow-md">
+                        <div class="bg-amber-50 p-4 flex justify-center"><i
+                                class="fa-solid fa-shot-glass text-4xl text-amber-700"></i><span
+                                class="text-sm ml-1">+</span></div>
+                        <div class="p-3 text-center">
+                            <div class="font-semibold text-gray-800">Double Espresso</div>
+                            <div class="text-emerald-700 font-bold text-lg">$3.00</div>
+                        </div>
+                    </div>
+                    <!-- Hot Chocolate -->
+                    <div onclick="addBeverageToCart('Hot Chocolate', 3.00)"
+                        class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-200 shadow-sm hover:shadow-md">
+                        <img src="19739-rich-n-creamy-hot-chocolate-600x600.jpg" alt="Hot Chocolate"
+                            class="w-full h-28 object-cover">
+                        <div class="p-3 text-center">
+                            <div class="font-semibold text-gray-800">Hot Chocolate</div>
+                            <div class="text-emerald-700 font-bold text-lg">$3.00</div>
+                        </div>
+                    </div>
+                    <!-- Cafe Mocha -->
+                    <div onclick="addBeverageToCart('Cafe Mocha', 3.00)"
+                        class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-200 shadow-sm hover:shadow-md">
+                        <img src="mocha-coffee-with-syrup-topping.webp" alt="Cafe Mocha"
+                            class="w-full h-28 object-cover">
+                        <div class="p-3 text-center">
+                            <div class="font-semibold text-gray-800">Cafe Mocha</div>
+                            <div class="text-emerald-700 font-bold text-lg">$3.00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flavoured Lattes (From Menu Image) -->
+            <div class="mb-20">
+                <div class="flex items-center gap-4 mb-8 border-b border-emerald-100 pb-4">
+                    <i class="fa-solid fa-heart text-3xl text-rose-500"></i>
+                    <h3 class="text-3xl font-bold text-gray-800">🎨 Flavoured Lattes</h3>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+                    <div onclick="addBeverageToCart('Red Latte', 3.00)"
+                        class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-200 shadow-sm hover:shadow-md">
+                        <img src="latte/Red-velvet-latte-2.jpg" alt="Red Latte" class="w-full h-28 object-cover">
+                        <div class="p-3 text-center">
+                            <div class="font-semibold text-gray-800">Red Latte</div>
+                            <div class="text-emerald-700 font-bold text-lg">$3.00</div>
+                        </div>
+                    </div>
+                    <div onclick="addBeverageToCart('Vanilla Latte', 4.00)"
+                        class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-200 shadow-sm hover:shadow-md">
+                        <img src="latte/vanilla_latte_on_a_blue_plate.webp" alt="Vanilla Latte"
+                            class="w-full h-28 object-cover">
+                        <div class="p-3 text-center">
+                            <div class="font-semibold text-gray-800">Vanilla Latte</div>
+                            <div class="text-emerald-700 font-bold text-lg">$4.00</div>
+                        </div>
+                    </div>
+                    <div onclick="addBeverageToCart('Caramel Latte', 4.00)"
+                        class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-200 shadow-sm hover:shadow-md">
+                        <img src="latte/images.jpg" alt="Caramel Latte" class="w-full h-28 object-cover">
+                        <div class="p-3 text-center">
+                            <div class="font-semibold text-gray-800">Caramel Latte</div>
+                            <div class="text-emerald-700 font-bold text-lg">$4.00</div>
+                        </div>
+                    </div>
+                    <div onclick="addBeverageToCart('Hazelnut Latte', 4.00)"
+                        class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-200 shadow-sm hover:shadow-md">
+                        <img src="latte/GettyImages-1130006190-scaled-1536x1024.webp" alt="Hazelnut Latte"
+                            class="w-full h-28 object-cover">
+                        <div class="p-3 text-center">
+                            <div class="font-semibold text-gray-800">Hazelnut Latte</div>
+                            <div class="text-emerald-700 font-bold text-lg">$4.00</div>
+                        </div>
+                    </div>
+                    <div onclick="addBeverageToCart('Red Cappuccino', 2.00)"
+                        class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-200 shadow-sm hover:shadow-md">
+                        <img src="latte/silo-product-image-v2-23Jun2023-181011-6009830530828-Angle_A-156424-2694_400Wx400H.jpg"
+                            alt="Red Cappuccino" class="w-full h-28 object-cover">
+                        <div class="p-3 text-center">
+                            <div class="font-semibold text-gray-800">Red Cappuccino</div>
+                            <div class="text-emerald-700 font-bold text-lg">$2.00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Teas Section -->
+            <div class="mb-20">
+                <div class="flex items-center gap-4 mb-8 border-b border-emerald-100 pb-4">
+                    <i class="fa-solid fa-leaf text-3xl text-green-600"></i>
+                    <h3 class="text-3xl font-bold text-gray-800">🍃 Premium Teas</h3>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                    <div onclick="addBeverageToCart('Rooibos Tea', 1.00)"
+                        class="product-card bg-white p-3 rounded-xl text-center cursor-pointer border">
+                        <img src="tea/This-Sweet-Crowd-Pleasing-Tea-Might-Replace-Your-Morning-Coffee-FT-BLOG0923-430543b861364d82ad23770faf6c0e3d.jpg"
+                            alt="Rooibos Tea" class="w-full h-24 object-cover rounded-md mb-3 mx-auto">
+                        <div class="font-medium text-gray-800 mb-1">🌿 Rooibos Tea</div>
+                        <div class="text-emerald-700 font-bold text-lg">$1.00</div>
+                    </div>
+                    <div onclick="addBeverageToCart('Black Tea (Five Roses)', 1.00)"
+                        class="product-card bg-white p-3 rounded-xl text-center cursor-pointer border hover:shadow-md transition-all">
+                        <img src="tea/FIVE-ROSES-BLACK-TEA-BLEND-WITH-LEMON-20S-large.webp" alt="Black Tea"
+                            class="w-full h-24 object-cover rounded-md mb-3 mx-auto">
+                        <div class="font-medium text-gray-800 mb-1">Black Tea (Five Roses)</div>
+                        <div class="text-emerald-700 font-bold text-lg">$1.00</div>
+                    </div>
+                    <div onclick="addBeverageToCart('Green Tea', 1.00)"
+                        class="product-card bg-white p-3 rounded-xl text-center cursor-pointer border hover:shadow-md transition-all">
+                        <img src="tea/1800ss_getty_rf_green_tea.webp" alt="Green Tea"
+                            class="w-full h-24 object-cover rounded-md mb-3 mx-auto">
+                        <div class="font-medium text-gray-800 mb-1">Green Tea</div>
+                        <div class="text-emerald-700 font-bold text-lg">$1.00</div>
+                    </div>
+                    <div onclick="addBeverageToCart('Camomile Tea', 1.00)"
+                        class="product-card bg-white p-3 rounded-xl text-center cursor-pointer border hover:shadow-md transition-all">
+                        <img src="tea/chamomile-tea.jpg" alt="Camomile Tea"
+                            class="w-full h-24 object-cover rounded-md mb-3 mx-auto">
+                        <div class="font-medium text-gray-800 mb-1">Camomile Tea</div>
+                        <div class="text-emerald-700 font-bold text-lg">$1.00</div>
+                    </div>
+                    <div onclick="addBeverageToCart('Mint Tea', 1.00)"
+                        class="product-card bg-white p-3 rounded-xl text-center cursor-pointer border hover:shadow-md transition-all">
+                        <img src="tea/Mint-Tea-SQUARE.jpg" alt="Mint Tea"
+                            class="w-full h-24 object-cover rounded-md mb-3 mx-auto">
+                        <div class="font-medium text-gray-800 mb-1">Mint Tea</div>
+                        <div class="text-emerald-700 font-bold text-lg">$1.00</div>
+                    </div>
+                    <div onclick="addBeverageToCart('Ginger Shot', 1.00)"
+                        class="product-card bg-white p-3 rounded-xl text-center cursor-pointer border bg-orange-50 hover:shadow-md transition-all">
+                        <img src="tea/EWL-Frozen-Lemon-Ginger-Tumeric-Shots-Hero-1x1-39076-01f358256e144c00930eb0cd6a922fbb.jpg"
+                            alt="Ginger Shot" class="w-full h-24 object-cover rounded-md mb-3 mx-auto">
+                        <div class="font-medium text-gray-800 mb-1">Ginger Shot</div>
+                        <div class="text-emerald-700 font-bold text-lg">+$1.00</div>
+                        <div class="text-xs text-orange-700 font-medium">Add-on</div>
+                    </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Juices & Milkshakes Section -->
+            <div class="mb-24">
+                <div class="flex items-center gap-4 mb-8 border-b border-emerald-100 pb-4">
+                    <i class="fa-solid fa-blender text-3xl text-emerald-600"></i>
+                    <h3 class="text-3xl font-bold text-gray-800">🧃 Freshly Squeezed Juices & Milkshakes</h3>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
+<div onclick="addBeverageToCart('Carrot Juice', 2.00)" class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-200 shadow-sm hover:shadow-md">
+                        <img src="Freshly Squeezed Juices  Milkshakes/images.jpg" alt="Carrot Juice" class="w-full h-28 object-cover">
+                        <div class="p-3 text-center">
+                            <div class="font-semibold text-gray-800">Carrot Juice</div>
+                            <div class="text-emerald-700 font-bold text-lg">$2.00</div>
+                            <div class="text-xs text-gray-500">Fresh squeezed</div>
+                        </div>
+                    </div>
+<div onclick="addBeverageToCart('Beetroot Juice', 2.00)" class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-200 shadow-sm hover:shadow-md">
+                        <img src="Freshly Squeezed Juices  Milkshakes/fresh-beet-juice-with-mint-leaf-in-a-glass.webp" alt="Beetroot Juice" class="w-full h-28 object-cover">
+                        <div class="p-3 text-center">
+                            <div class="font-semibold text-gray-800">Beetroot Juice</div>
+                            <div class="text-emerald-700 font-bold text-lg">$2.00</div>
+                            <div class="text-xs text-gray-500">Fresh squeezed</div>
+                        </div>
+                    </div>
+<div onclick="addBeverageToCart('Cream Soda', 2.00)" class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-200 shadow-sm hover:shadow-md">
+                        <img src="Freshly Squeezed Juices  Milkshakes/JapaneseStyle-CreamSoda-inTokyo-April29-2019.jpg" alt="Cream Soda" class="w-full h-28 object-cover">
+                        <div class="p-3 text-center">
+                            <div class="font-semibold text-gray-800">Cream Soda</div>
+                            <div class="text-emerald-700 font-bold text-lg">$2.00</div>
+                            <div class="text-xs text-gray-500">Refreshing</div>
+                        </div>
+                    </div>
+<div onclick="addBeverageToCart('Oreo Shake', 2.00)" class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-200 shadow-sm hover:shadow-md">
+                        <img src="Freshly Squeezed Juices  Milkshakes/Oreo-Nutella-Milkshake.jpg" alt="Oreo Shake" class="w-full h-28 object-cover">
+                        <div class="p-3 text-center">
+                            <div class="font-semibold text-gray-800">Oreo Shake</div>
+                            <div class="text-emerald-700 font-bold text-lg">$2.00</div>
+                            <div class="text-xs text-gray-500">Creamy delight</div>
+                        </div>
+                    </div>
+<div onclick="addBeverageToCart('Banana Shake', 2.00)" class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-200 shadow-sm hover:shadow-md">
+                        <img src="Freshly Squeezed Juices  Milkshakes/Banana-Milkshake-5-1.jpg" alt="Banana Shake" class="w-full h-28 object-cover">
+                        <div class="p-3 text-center">
+                            <div class="font-semibold text-gray-800">Banana Shake</div>
+                            <div class="text-emerald-700 font-bold text-lg">$2.00</div>
+                            <div class="text-xs text-gray-500">Smooth & sweet</div>
+                        </div>
+                    </div>
+<div onclick="addBeverageToCart('Coffee Shake', 3.00)" class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-200 shadow-sm hover:shadow-md">
+                        <img src="Freshly Squeezed Juices  Milkshakes/creamy_coffee_milkshake.webp" alt="Coffee Shake" class="w-full h-28 object-cover">
+                        <div class="p-3 text-center">
+                            <div class="font-semibold text-gray-800">Coffee Shake</div>
+                            <div class="text-emerald-700 font-bold text-lg">$3.00</div>
+                            <div class="text-xs text-gray-500">Iced blended</div>
+                        </div>
+                    </div>
+<div onclick="addBeverageToCart('Vanilla Milkshake', 3.00)" class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-200 shadow-sm hover:shadow-md">
+                        <img src="Freshly Squeezed Juices  Milkshakes/Vanilla-Milkshake-FT-MAG-RECIPE-0325-4ad53abc27a74f7687e510cc17d28d1d.webp" alt="Vanilla Milkshake" class="w-full h-28 object-cover">
+                        <div class="p-3 text-center">
+                            <div class="font-semibold text-gray-800">Vanilla Milkshake</div>
+                            <div class="text-emerald-700 font-bold text-lg">$3.00</div>
+                            <div class="text-xs text-gray-500">Classic flavor</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fruit Smoothies Section -->
+            <div class="mb-24">
+                <div class="flex items-center gap-4 mb-8 border-b border-emerald-100 pb-4">
+                    <i class="fa-solid fa-fruit-apple text-3xl text-purple-600"></i>
+                    <h3 class="text-3xl font-bold text-gray-800">🍓 Fruit Smoothies</h3>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+                    <div onclick="addBeverageToCart('Bubblegum Smoothie', 3.00)" class="product-card bg-white rounded-2xl p-3 text-center cursor-pointer border hover:shadow-md">
+                  <img src="Fruit Smoothies/Bubble-Gum-Smoothie-Bowl-Dragon-Fruit-1.webp" alt="Bubblegum Smoothie" class="w-full h-28 object-cover rounded-md mb-3 mx-auto">
+                        <div class="text-2xl mb-2">🫧</div>
+                        <div class="font-semibold">Bubblegum</div>
+                        <div class="text-emerald-700 font-bold text-lg">$3.00</div>
+                    </div>
+                    <div onclick="addBeverageToCart('Green Machine', 3.50)" class="product-card bg-white rounded-2xl p-4 text-center cursor-pointer border hover:shadow-md">
+                        <div class="text-2xl mb-2">🥬</div>
+                        <div class="font-semibold">Green Machine</div>
+                        <div class="text-emerald-700 font-bold text-lg">$3.50</div>
+                    </div>
+                    <div onclick="addBeverageToCart('Strawberry', 3.00)" class="product-card bg-white rounded-2xl p-3 text-center cursor-pointer border hover:shadow-md">
+                  <img src="Fruit Smoothies/20221215-1222-SEO-RECIPES-25335-HIRES.webp" alt="Strawberry Smoothie" class="w-full h-28 object-cover rounded-md mb-3 mx-auto">
+                        <div class="text-2xl mb-2">🍓</div>
+                        <div class="font-semibold">Strawberry</div>
+                        <div class="text-emerald-700 font-bold text-lg">$3.00</div>
+                    </div>
+                    <div onclick="addBeverageToCart('Berry Passion', 3.50)" class="product-card bg-white rounded-2xl p-3 text-center cursor-pointer border hover:shadow-md">
+                  <img src="Fruit Smoothies/smoothieDSC04497-1.jpg" alt="Berry Passion Smoothie" class="w-full h-28 object-cover rounded-md mb-3 mx-auto">
+                        <div class="text-2xl mb-2">🫐</div>
+                        <div class="font-semibold">Berry Passion</div>
+                        <div class="text-emerald-700 font-bold text-lg">$3.50</div>
+                    </div>
+                    <div onclick="addBeverageToCart('Cream Soda Smoothie', 3.00)" class="product-card bg-white rounded-2xl p-3 text-center cursor-pointer border hover:shadow-md">
+                  <img src="Fruit Smoothies/Cream-Soda-III.jpg" alt="Cream Soda Smoothie" class="w-full h-28 object-cover rounded-md mb-3 mx-auto">
+                        <div class="text-2xl mb-2">🥤</div>
+                        <div class="font-semibold">Cream Soda</div>
+                        <div class="text-emerald-700 font-bold text-lg">$3.00</div>
+                    </div>
+                    <div onclick="addBeverageToCart('Kiwi Cooler', 3.50)" class="product-card bg-white rounded-2xl p-3 text-center cursor-pointer border hover:shadow-md">
+                  <img src="Fruit Smoothies/P50a0d2ef_0.jpg" alt="Kiwi Cooler Smoothie" class="w-full h-28 object-cover rounded-md mb-3 mx-auto">
+                        <div class="text-2xl mb-2">🥝</div>
+                        <div class="font-semibold">Kiwi Cooler</div>
+                        <div class="text-emerald-700 font-bold text-lg">$3.50</div>
+                    </div>
+                    <div onclick="addBeverageToCart('Oreo Smoothie', 3.00)" class="product-card bg-white rounded-2xl p-3 text-center cursor-pointer border hover:shadow-md">
+                  <img src="Fruit Smoothies/Oreo-Coffee-Banana-Smoothie-Recipe.jpg" alt="Oreo Smoothie" class="w-full h-28 object-cover rounded-md mb-3 mx-auto">
+                        <div class="text-2xl mb-2">🍪</div>
+                        <div class="font-semibold">Oreo</div>
+                        <div class="text-emerald-700 font-bold text-lg">$3.00</div>
+                    </div>
+                    <div onclick="addBeverageToCart('Mango Paradise', 3.50)" class="product-card bg-white rounded-2xl p-3 text-center cursor-pointer border hover:shadow-md">
+                  <img src="Fruit Smoothies/indulge-tropical-paradise-captivating-image-juice-tumbler-brimming-luscious-mango-smoothie-made-278400008.webp" alt="Mango Paradise Smoothie" class="w-full h-28 object-cover rounded-md mb-3 mx-auto">
+                        <div class="text-2xl mb-2">🥭</div>
+                        <div class="font-semibold">Mango Paradise</div>
+                        <div class="text-emerald-700 font-bold text-lg">$3.50</div>
+                    </div>
+                    <div onclick="addBeverageToCart('Banana Smoothie', 3.00)" class="product-card bg-white rounded-2xl p-3 text-center cursor-pointer border hover:shadow-md">
+                  <img src="Fruit Smoothies/6236089-780238d875594b00871a5cbbd37a8a36.jpg" alt="Banana Smoothie" class="w-full h-28 object-cover rounded-md mb-3 mx-auto">
+                        <div class="text-2xl mb-2">🍌</div>
+                        <div class="font-semibold">Banana</div>
+                        <div class="text-emerald-700 font-bold text-lg">$3.00</div>
+                    </div>
+                    <div onclick="addBeverageToCart('Strawberry Split', 3.50)" class="product-card bg-white rounded-2xl p-3 text-center cursor-pointer border hover:shadow-md">
+                  <img src="Fruit Smoothies/AR-231749-strawberry-raspberry-smoothie-ddmfs-3x4-aabb843c85a34ed09105a7d2e13b7973.jpg" alt="Strawberry Split Smoothie" class="w-full h-28 object-cover rounded-md mb-3 mx-auto">
+                        <div class="text-2xl mb-2">🍓🍨</div>
+                        <div class="font-semibold">Strawberry Split</div>
+                        <div class="text-emerald-700 font-bold text-lg">$3.50</div>
+                    </div>
+                    <div onclick="addBeverageToCart('Blue Chia', 3.50)" class="product-card bg-white rounded-2xl p-3 text-center cursor-pointer border hover:shadow-md">
+                  <img src="Fruit Smoothies/images.jpg" alt="Blue Chia Smoothie" class="w-full h-28 object-cover rounded-md mb-3 mx-auto">
+                        <div class="text-2xl mb-2">🔵</div>
+                        <div class="font-semibold">Blue Chia</div>
+                        <div class="text-emerald-700 font-bold text-lg">$3.50</div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+                    <!-- Bakery Items (Breads & Pastries) -->
+                    <div class="mt-16">
+                        <div class="flex items-center gap-4 mb-8 border-b border-emerald-100 pb-4">
+                            <i class="fa-solid fa-bread-slice text-3xl text-amber-700"></i>
+                            <h3 class="text-3xl font-bold text-gray-800">🥖 Fresh Bakery (Baked Daily)</h3>
+                        </div>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
+                            <div onclick="quickAddBakery('Farm Bread', 1.50)"
+                                class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100">
+                                <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                                    class="w-full h-28 object-cover" alt="Farm Bread">
+                                <div class="p-2 text-center">
+                                    <div class="font-medium text-sm">Farm Bread</div>
+                                    <div class="text-emerald-700 font-bold">$1.50</div>
+                                </div>
+                            </div>
+                            <div onclick="quickAddBakery('Butter Croissants', 3.50)"
+                                class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100">
+                                <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                                    class="w-full h-28 object-cover" alt="Croissant">
+                                <div class="p-2 text-center">
+                                    <div class="font-medium text-sm">Butter Croissants</div>
+                                    <div class="text-emerald-700 font-bold">$3.50</div>
+                                </div>
+                            </div>
+                            <div onclick="quickAddBakery('Coffee Beans', 5.00)"
+                                class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100">
+                                <img src="fresh bakery/Untitled-5 copy_6.jpg.webp"
+                                    class="w-full h-28 object-cover" alt="Coffee Beans">
+                                <div class="p-2 text-center">
+                                    <div class="font-medium text-sm">Coffee Beans</div>
+                                    <div class="text-emerald-700 font-bold">$5.00</div>
+                                </div>
+                            </div>
+                            <div onclick="quickAddBakery('Danish Chelsea', 1.50)"
+                                class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100">
+                                <img src="fresh bakery/cq5dam.web.1280.1280.webp"
+                                    class="w-full h-28 object-cover" alt="Danish Chelsea">
+                                <div class="p-2 text-center">
+                                    <div class="font-medium text-sm">Danish Chelsea</div>
+                                    <div class="text-emerald-700 font-bold">$1.50</div>
+                                </div>
+                            </div>
+                            <div onclick="quickAddBakery('Custard Danish', 2.00)"
+                                class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100">
+                                <img src="fresh bakery/Custard-Danish-Pastry-Recipe-1FEAT-500x500.jpg"
+                                    class="w-full h-28 object-cover" alt="Custard Danish">
+                                <div class="p-2 text-center">
+                                    <div class="font-medium text-sm">Custard Danish</div>
+                                    <div class="text-emerald-700 font-bold">$2.00</div>
+                                </div>
+                            </div>
+                            <div onclick="quickAddBakery('Plain Scones', 1.80)"
+                                class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100">
+                                <img src="fresh bakery/613663424_1528185195422457_3435649035489604667_n.jpg"
+                                    class="w-full h-28 object-cover" alt="Plain Scones">
+                                <div class="p-2 text-center">
+                                    <div class="font-medium text-sm">Plain Scones</div>
+                                    <div class="text-emerald-700 font-bold">$1.80</div>
+                                </div>
+                            </div>
+                            <div onclick="quickAddBakery('Custard Doughnut', 1.00)"
+                                class="product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100">
+                                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                                    class="w-full h-28 object-cover" alt="Doughnut">
+                                <div class="p-2 text-center">
+                                    <div class="font-medium text-sm">Custard Doughnut</div>
+                                    <div class="text-emerald-700 font-bold">$1.00</div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+<!-- Shop Boxes Section -->
+<section id="boxes" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <span class="text-emerald-700 font-semibold uppercase tracking-wider text-sm">Inspired by Farmers
+                Pick</span>
+            <h2 class="text-5xl font-bold mt-3 text-gray-900">Choose Your Perfect Box</h2>
+            <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Fresh, seasonal produce curated weekly from our network of
+                local farmers</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="product-card bg-white rounded-3xl overflow-hidden border border-gray-100">
+                <div class="h-64 relative">
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        class="w-full h-full object-cover" alt="Fresh produce box">
+                    <span
+                        class="absolute top-6 left-6 bg-emerald-600 text-white text-xs font-bold px-4 py-2 rounded-full">BEST
+                        SELLER</span>
+                </div>
+                <div class="p-8">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Medium Fresh Box</h3>
+                            <p class="text-emerald-600">12-15 varieties • Feeds 2-3</p>
+                        </div>
+                        <div class="text-right"><span class="text-4xl font-bold text-emerald-700">$28</span><span
+                                class="block text-sm text-gray-500">/ week</span></div>
+                    </div>
+                    <button onclick="addToCart(1, 'Medium Fresh Box', 28)"
+                        class="w-full bg-emerald-700 hover:bg-emerald-800 text-white py-4 rounded-xl font-semibold transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-plus"></i> ADD TO CART
+                    </button>
+                </div>
+            </div>
+            <div class="product-card bg-white rounded-3xl overflow-hidden border border-gray-100">
+                <div class="h-64 relative">
+                    <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        class="w-full h-full object-cover" alt="Family harvest box">
+                    <span
+                        class="absolute top-6 left-6 bg-amber-500 text-white text-xs font-bold px-4 py-2 rounded-full">FAMILY
+                        SIZE</span>
+                </div>
+                <div class="p-8">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Family Harvest Box</h3>
+                            <p class="text-emerald-600">20+ varieties • Feeds 4-6</p>
+                        </div>
+                        <div class="text-right"><span class="text-4xl font-bold text-emerald-700">$48</span><span
+                                class="block text-sm text-gray-500">/ week</span></div>
+                    </div>
+                    <button onclick="addToCart(2, 'Family Harvest Box', 48)"
+                        class="w-full bg-emerald-700 hover:bg-emerald-800 text-white py-4 rounded-xl font-semibold transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-plus"></i> ADD TO CART
+                    </button>
+                </div>
+            </div>
+            <div class="product-card bg-white rounded-3xl overflow-hidden border border-gray-100">
+                <div class="h-64 relative">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        class="w-full h-full object-cover" alt="Bakery combo">
+                    <span
+                        class="absolute top-6 left-6 bg-rose-500 text-white text-xs font-bold px-4 py-2 rounded-full">BAKERY
+                        EDITION</span>
+                </div>
+                <div class="p-8">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Bakery & Produce</h3>
+                            <p class="text-emerald-600">Fresh bread + 10 veg items</p>
+                        </div>
+                        <div class="text-right"><span class="text-4xl font-bold text-emerald-700">$35</span><span
+                                class="block text-sm text-gray-500">/ box</span></div>
+                    </div>
+                    <button onclick="addToCart(3, 'Bakery & Produce Combo', 35)"
+                        class="w-full bg-emerald-700 hover:bg-emerald-800 text-white py-4 rounded-xl font-semibold transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-plus"></i> ADD TO CART
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FRESH PRODUCE SECTION ===================== -->
+<section id="produce" class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-12">
+            <span class="text-emerald-700 font-semibold uppercase tracking-wider text-sm">Fresh This Week</span>
+            <h2 class="text-5xl font-bold mt-3 text-gray-900">Hand-Picked Produce</h2>
+            <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Straight from our farms to your table – over 50 varieties
+                available. Click any item to add to cart.</p>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+            <button onclick="filterProduce('all')"
+                class="filter-btn active px-6 py-2.5 rounded-full border border-emerald-700 font-semibold text-sm"
+                data-cat="all">🌿 All Produce</button>
+            <button onclick="filterProduce('fruit')"
+                class="filter-btn px-6 py-2.5 rounded-full border border-gray-300 text-gray-600 font-semibold text-sm"
+                data-cat="fruit">🍓 Fruits</button>
+            <button onclick="filterProduce('vegetable')"
+                class="filter-btn px-6 py-2.5 rounded-full border border-gray-300 text-gray-600 font-semibold text-sm"
+                data-cat="vegetable">🥦 Vegetables</button>
+            <button onclick="filterProduce('herb')"
+                class="filter-btn px-6 py-2.5 rounded-full border border-gray-300 text-gray-600 font-semibold text-sm"
+                data-cat="herb">🌿 Herbs & Spices</button>
+            <button onclick="filterProduce('legume')"
+                class="filter-btn px-6 py-2.5 rounded-full border border-gray-300 text-gray-600 font-semibold text-sm"
+                data-cat="legume">🫘 Legumes & Nuts</button>
+        </div>
+
+        <div id="produce-grid"
+            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
+
+            <!-- ===== FRUITS ===== -->
+            <div data-cat="fruit"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Apple', 2.50)">
+                <img src="https://images.unsplash.com/photo-1579613832125-5d34a13ffe2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Apple">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Apple</div>
+                    <div class="text-emerald-700 font-bold text-lg">$2.50</div>
+                    <div class="text-xs text-gray-400">per kg</div>
+                </div>
+            </div>
+
+            <div data-cat="fruit"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Blackberry', 4.00)">
+                <img src="https://images.unsplash.com/photo-1577069861033-55d04cec4ef5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Blackberry">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Blackberry</div>
+                    <div class="text-emerald-700 font-bold text-lg">$4.00</div>
+                    <div class="text-xs text-gray-400">per punnet</div>
+                </div>
+            </div>
+
+            <div data-cat="fruit"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Blueberry', 4.50)">
+                <img src="https://images.unsplash.com/photo-1498557850523-fd3d118b962e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Blueberry">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Blueberry</div>
+                    <div class="text-emerald-700 font-bold text-lg">$4.50</div>
+                    <div class="text-xs text-gray-400">per punnet</div>
+                </div>
+            </div>
+
+            <div data-cat="fruit"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Cantaloupe', 3.20)">
+                <img src="https://images.unsplash.com/photo-1571575173700-afb9492e6a50?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Cantaloupe">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Cantaloupe</div>
+                    <div class="text-emerald-700 font-bold text-lg">$3.20</div>
+                    <div class="text-xs text-gray-400">each</div>
+                </div>
+            </div>
+
+            <div data-cat="fruit"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Coconut', 2.00)">
+                <img src="https://images.unsplash.com/photo-1580984969071-a8da5656c2fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Coconut">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Coconut</div>
+                    <div class="text-emerald-700 font-bold text-lg">$2.00</div>
+                    <div class="text-xs text-gray-400">each</div>
+                </div>
+            </div>
+
+            <div data-cat="fruit"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Dates', 5.50)">
+                <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Dates">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Dates</div>
+                    <div class="text-emerald-700 font-bold text-lg">$5.50</div>
+                    <div class="text-xs text-gray-400">per 500g</div>
+                </div>
+            </div>
+
+            <div data-cat="fruit"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Fig', 4.00)">
+                <img src="https://images.unsplash.com/photo-1528825871115-3581a5387919?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Fig">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Fig</div>
+                    <div class="text-emerald-700 font-bold text-lg">$4.00</div>
+                    <div class="text-xs text-gray-400">per punnet</div>
+                </div>
+            </div>
+
+            <div data-cat="fruit"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Grape', 3.80)">
+                <img src="https://images.unsplash.com/photo-1537640538966-79f369143f8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Grape">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Grape</div>
+                    <div class="text-emerald-700 font-bold text-lg">$3.80</div>
+                    <div class="text-xs text-gray-400">per kg</div>
+                </div>
+            </div>
+
+            <div data-cat="fruit"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Guava', 2.50)">
+                <img src="https://images.unsplash.com/photo-1536511132770-e5058c7e8c46?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Guava">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Guava</div>
+                    <div class="text-emerald-700 font-bold text-lg">$2.50</div>
+                    <div class="text-xs text-gray-400">per kg</div>
+                </div>
+            </div>
+
+            <div data-cat="fruit"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Honeydew', 3.00)">
+                <img src="https://images.unsplash.com/photo-1571575173700-afb9492e6a50?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Honeydew">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Honeydew</div>
+                    <div class="text-emerald-700 font-bold text-lg">$3.00</div>
+                    <div class="text-xs text-gray-400">each</div>
+                </div>
+            </div>
+
+            <div data-cat="fruit"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Jackfruit', 6.00)">
+                <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Jackfruit">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Jackfruit</div>
+                    <div class="text-emerald-700 font-bold text-lg">$6.00</div>
+                    <div class="text-xs text-gray-400">per kg</div>
+                </div>
+            </div>
+
+            <div data-cat="fruit"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Kiwi', 3.50)">
+                <img src="https://images.unsplash.com/photo-1615485500704-8e990f9900f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Kiwi">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Kiwi</div>
+                    <div class="text-emerald-700 font-bold text-lg">$3.50</div>
+                    <div class="text-xs text-gray-400">4-pack</div>
+                </div>
+            </div>
+
+            <div data-cat="fruit"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Lychee', 5.00)">
+                <img src="Hand-Picked Produce/IMG_2407.webp"
+                    class="w-full h-40 object-cover" alt="Lychee">
+
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Lychee</div>
+                    <div class="text-emerald-700 font-bold text-lg">$5.00</div>
+                    <div class="text-xs text-gray-400">per 500g</div>
+                </div>
+            </div>
+
+            <div data-cat="fruit"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Fresh Mangoes', 3.50)">
+                <img src="Hand-Picked Produce/sci-mango-adobestock_116749966.jpeg"
+                    class="w-full h-40 object-cover" alt="Fresh Mangoes">
+
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Fresh Mangoes</div>
+                    <div class="text-emerald-700 font-bold text-lg">$3.50</div>
+                    <div class="text-xs text-gray-400">per kg</div>
+                </div>
+            </div>
+
+            <div data-cat="fruit"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Sweet Bananas', 1.80)">
+                <img src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Bananas">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Sweet Bananas</div>
+                    <div class="text-emerald-700 font-bold text-lg">$1.80</div>
+                    <div class="text-xs text-gray-400">per bunch</div>
+                </div>
+            </div>
+
+            <div data-cat="fruit"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Hass Avocados', 1.10)">
+                <img src="https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Avocado">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Hass Avocados</div>
+                    <div class="text-emerald-700 font-bold text-lg">$1.10</div>
+                    <div class="text-xs text-gray-400">each</div>
+                </div>
+            </div>
+
+            <!-- ===== VEGETABLES ===== -->
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Beetroot', 1.80)">
+                <img src="https://images.unsplash.com/photo-1593105544559-ecb03bf76f82?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Beetroot">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Beetroot</div>
+                    <div class="text-emerald-700 font-bold text-lg">$1.80</div>
+                    <div class="text-xs text-gray-400">per bunch</div>
+                </div>
+            </div>
+
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Broccoli', 2.20)">
+                <img src="https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Broccoli">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Broccoli</div>
+                    <div class="text-emerald-700 font-bold text-lg">$2.20</div>
+                    <div class="text-xs text-gray-400">per head</div>
+                </div>
+            </div>
+
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Cabbage', 1.50)">
+                <img src="Hand-Picked Produce/Benefits-Of-Cabbage-589153824-770x533-1_jpg.webp"
+                    class="w-full h-40 object-cover" alt="Cabbage">
+
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Cabbage</div>
+                    <div class="text-emerald-700 font-bold text-lg">$1.50</div>
+                    <div class="text-xs text-gray-400">each</div>
+                </div>
+            </div>
+
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Carrot', 1.20)">
+                <img src="https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Carrot">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Carrot</div>
+                    <div class="text-emerald-700 font-bold text-lg">$1.20</div>
+                    <div class="text-xs text-gray-400">per bunch</div>
+                </div>
+            </div>
+
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Cauliflower', 2.50)">
+                <img src="https://images.unsplash.com/photo-1568584711075-3d021a7c3ca3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Cauliflower">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Cauliflower</div>
+                    <div class="text-emerald-700 font-bold text-lg">$2.50</div>
+                    <div class="text-xs text-gray-400">per head</div>
+                </div>
+            </div>
+
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Celery', 1.80)">
+                <img src="Hand-Picked Produce/download.jpg"
+                    class="w-full h-40 object-cover" alt="Celery">
+
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Celery</div>
+                    <div class="text-emerald-700 font-bold text-lg">$1.80</div>
+                    <div class="text-xs text-gray-400">per bunch</div>
+                </div>
+            </div>
+
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Chayote', 1.00)">
+                <img src="https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Chayote">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Chayote</div>
+                    <div class="text-emerald-700 font-bold text-lg">$1.00</div>
+                    <div class="text-xs text-gray-400">each</div>
+                </div>
+            </div>
+
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Collard Greens', 1.30)">
+                <img src="https://images.unsplash.com/photo-1576045057999-568f588f82fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Collard Greens">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Collard Greens</div>
+                    <div class="text-emerald-700 font-bold text-lg">$1.30</div>
+                    <div class="text-xs text-gray-400">per bunch</div>
+                </div>
+            </div>
+
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Sweet Corn', 0.80)">
+                <img src="Hand-Picked Produce/images (1).jpg"
+                    class="w-full h-40 object-cover" alt="Sweet Corn">
+
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Sweet Corn</div>
+                    <div class="text-emerald-700 font-bold text-lg">$0.80</div>
+                    <div class="text-xs text-gray-400">each</div>
+                </div>
+            </div>
+
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Cucumber', 0.90)">
+                <img src="Hand-Picked Produce/images.jpg"
+                    class="w-full h-40 object-cover" alt="Cucumber">
+
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Cucumber</div>
+                    <div class="text-emerald-700 font-bold text-lg">$0.90</div>
+                    <div class="text-xs text-gray-400">each</div>
+                </div>
+            </div>
+
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Daikon', 1.50)">
+                <img src="https://images.unsplash.com/photo-1598512752271-33f913a5af13?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Daikon">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Daikon</div>
+                    <div class="text-emerald-700 font-bold text-lg">$1.50</div>
+                    <div class="text-xs text-gray-400">each</div>
+                </div>
+            </div>
+
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Eggplant', 1.50)">
+                <img src="Hand-Picked Produce/download (1).jpg"
+                    class="w-full h-40 object-cover" alt="Eggplant">
+
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Eggplant</div>
+                    <div class="text-emerald-700 font-bold text-lg">$1.50</div>
+                    <div class="text-xs text-gray-400">each</div>
+                </div>
+            </div>
+
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Endive', 2.00)">
+                <img src="Hand-Picked Produce/What-is-Endive_.jpg"
+                    class="w-full h-40 object-cover" alt="Endive">
+
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Endive</div>
+                    <div class="text-emerald-700 font-bold text-lg">$2.00</div>
+                    <div class="text-xs text-gray-400">per head</div>
+                </div>
+            </div>
+
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Gourds', 2.50)">
+                <img src="https://images.unsplash.com/photo-1508747703725-719777637510?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Gourds">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Gourds</div>
+                    <div class="text-emerald-700 font-bold text-lg">$2.50</div>
+                    <div class="text-xs text-gray-400">each</div>
+                </div>
+            </div>
+
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Iceberg Lettuce', 1.50)">
+                <img src="https://images.unsplash.com/photo-1556801712-76c8eb07bbc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Iceberg Lettuce">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Iceberg Lettuce</div>
+                    <div class="text-emerald-700 font-bold text-lg">$1.50</div>
+                    <div class="text-xs text-gray-400">per head</div>
+                </div>
+            </div>
+
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Jicama', 2.00)">
+                <img src="https://images.unsplash.com/photo-1597362925123-77861d3fbac7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Jicama">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Jicama</div>
+                    <div class="text-emerald-700 font-bold text-lg">$2.00</div>
+                    <div class="text-xs text-gray-400">per kg</div>
+                </div>
+            </div>
+
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Kale', 1.50)">
+                <img src="https://images.unsplash.com/photo-1524179091875-bf99a9a6af57?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Kale">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Kale</div>
+                    <div class="text-emerald-700 font-bold text-lg">$1.50</div>
+                    <div class="text-xs text-gray-400">per bunch</div>
+                </div>
+            </div>
+
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Kangkong', 1.20)">
+                <img src="https://images.unsplash.com/photo-1576045057999-568f588f82fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Kangkong">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Kangkong</div>
+                    <div class="text-emerald-700 font-bold text-lg">$1.20</div>
+                    <div class="text-xs text-gray-400">per bunch</div>
+                </div>
+            </div>
+
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Kohlrabi', 1.80)">
+                <img src="https://images.unsplash.com/photo-1511993226159-8f361b90f09f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Kohlrabi">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Kohlrabi</div>
+                    <div class="text-emerald-700 font-bold text-lg">$1.80</div>
+                    <div class="text-xs text-gray-400">each</div>
+                </div>
+            </div>
+
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Leek', 1.80)">
+                <img src="https://images.unsplash.com/photo-1595855759920-86582396756a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Leek">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Leek</div>
+                    <div class="text-emerald-700 font-bold text-lg">$1.80</div>
+                    <div class="text-xs text-gray-400">per bunch</div>
+                </div>
+            </div>
+
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Mushroom', 3.00)">
+                <img src="Hand-Picked Produce/oyster-mushroom-1296x728-header.webp"
+                    class="w-full h-40 object-cover" alt="Mushroom">
+
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Mushroom</div>
+                    <div class="text-emerald-700 font-bold text-lg">$3.00</div>
+                    <div class="text-xs text-gray-400">per 250g</div>
+                </div>
+            </div>
+
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Ripe Tomatoes', 2.20)">
+                <img src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Tomatoes">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Ripe Tomatoes</div>
+                    <div class="text-emerald-700 font-bold text-lg">$2.20</div>
+                    <div class="text-xs text-gray-400">per kg</div>
+                </div>
+            </div>
+
+            <div data-cat="vegetable"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Fresh Spinach', 1.50)">
+                <img src="Hand-Picked Produce/03217beb069ecc662fee87793ad2787971bf47ae-3543x1329.avif"
+                    class="w-full h-40 object-cover" alt="Fresh Spinach">
+
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Fresh Spinach</div>
+                    <div class="text-emerald-700 font-bold text-lg">$1.50</div>
+                    <div class="text-xs text-gray-400">per bunch</div>
+                </div>
+            </div>
+
+            <!-- ===== HERBS & SPICES ===== -->
+            <div data-cat="herb"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Chives', 1.20)">
+                <img src="https://images.unsplash.com/photo-1526318896980-cf78c088247c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Chives">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Chives</div>
+                    <div class="text-emerald-700 font-bold text-lg">$1.20</div>
+                    <div class="text-xs text-gray-400">per bunch</div>
+                </div>
+            </div>
+
+            <div data-cat="herb"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Cilantro', 1.00)">
+                <img src="https://images.unsplash.com/photo-1550411294-24741b30b73b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Cilantro">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Cilantro</div>
+                    <div class="text-emerald-700 font-bold text-lg">$1.00</div>
+                    <div class="text-xs text-gray-400">per bunch</div>
+                </div>
+            </div>
+
+            <div data-cat="herb"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Dill', 1.20)">
+                <img src="https://images.unsplash.com/photo-1631380402736-e9a5c4a7e4dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Dill">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Dill</div>
+                    <div class="text-emerald-700 font-bold text-lg">$1.20</div>
+                    <div class="text-xs text-gray-400">per bunch</div>
+                </div>
+            </div>
+
+            <div data-cat="herb"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Fennel', 2.00)">
+                <img src="https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Fennel">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Fennel</div>
+                    <div class="text-emerald-700 font-bold text-lg">$2.00</div>
+                    <div class="text-xs text-gray-400">per bulb</div>
+                </div>
+            </div>
+
+            <div data-cat="herb"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Garlic', 1.50)">
+                <img src="https://images.unsplash.com/photo-1540148426945-6cf22a6b2383?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Garlic">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Garlic</div>
+                    <div class="text-emerald-700 font-bold text-lg">$1.50</div>
+                    <div class="text-xs text-gray-400">per head</div>
+                </div>
+            </div>
+
+            <div data-cat="herb"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Fresh Ginger', 2.00)">
+                <img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Ginger">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Fresh Ginger</div>
+                    <div class="text-emerald-700 font-bold text-lg">$2.00</div>
+                    <div class="text-xs text-gray-400">per 200g</div>
+                </div>
+            </div>
+
+            <div data-cat="herb"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Horseradish', 2.50)">
+                <img src="https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Horseradish">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Horseradish</div>
+                    <div class="text-emerald-700 font-bold text-lg">$2.50</div>
+                    <div class="text-xs text-gray-400">per root</div>
+                </div>
+            </div>
+
+            <div data-cat="herb"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Mustard Greens', 1.40)">
+                <img src="Hand-Picked Produce/Mustard-Greens.webp"
+                    class="w-full h-40 object-cover" alt="Mustard Greens">
+
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Mustard Greens</div>
+                    <div class="text-emerald-700 font-bold text-lg">$1.40</div>
+                    <div class="text-xs text-gray-400">per bunch</div>
+                </div>
+            </div>
+
+            <!-- ===== LEGUMES & NUTS ===== -->
+            <div data-cat="legume"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Garbanzo Beans', 2.50)">
+                <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Garbanzo Beans">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Garbanzo Beans</div>
+                    <div class="text-emerald-700 font-bold text-lg">$2.50</div>
+                    <div class="text-xs text-gray-400">per 500g</div>
+                </div>
+            </div>
+
+            <div data-cat="legume"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Lentils', 2.00)">
+                <img src="https://images.unsplash.com/photo-1612257999756-0a6e81040afe?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Lentils">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Lentils</div>
+                    <div class="text-emerald-700 font-bold text-lg">$2.00</div>
+                    <div class="text-xs text-gray-400">per 500g</div>
+                </div>
+            </div>
+
+            <div data-cat="legume"
+                class="produce-item product-card bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-100"
+                onclick="addProduceToCart('Macadamia Nuts', 8.00)">
+                <img src="https://images.unsplash.com/photo-1575218823251-f1f6da12a1ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    class="w-full h-40 object-cover" alt="Macadamia">
+                <div class="p-3">
+                    <div class="font-semibold text-gray-900 text-sm">Macadamia Nuts</div>
+                    <div class="text-emerald-700 font-bold text-lg">$8.00</div>
+                    <div class="text-xs text-gray-400">per 250g</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-10">
+            <p id="produce-count" class="text-gray-500 text-sm">Showing all <span
+                    class="font-semibold text-emerald-700">50+ items</span> — click any card to add to cart</p>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="relative rounded-3xl shadow-2xl overflow-hidden h-[500px]">
+                <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+                    <source
+                        src="./AQOBUrSxhCSiYJ2vu-rR4RAa9JFnR2ueFXKOzeCQcbbDYTkv7erMh_FOvVb2tw1NnXa9igQaW49KKGoTUW1vg5v5OiEw0RFf-4-xb_eJSSGbXw.mp4"
+                        type="video/mp4">
+                </video>
+                <div class="absolute inset-0 bg-black/30"></div>
+            </div>
+            <div>
+                <span class="text-emerald-700 font-semibold uppercase tracking-wider text-sm">Our Story</span>
+                <h2 class="text-5xl font-bold mt-3 mb-6 text-gray-900">Largest Fresh Produce Distributor in Bulawayo
+                </h2>
+                <p class="text-gray-600 text-lg mb-8">Willsgrove Farm Enterprises is your one-stop food market. From
+                    farm-fresh fruits and vegetables to our famous bakery and coffee shop — everything is grown or baked
+                    with love in Zimbabwe.</p>
+                <div class="grid grid-cols-3 gap-8 mb-10">
+                    <div>
+                        <div class="text-5xl font-bold text-emerald-700">50+</div>
+                        <div class="text-sm text-gray-600">Farmers supported</div>
+                    </div>
+                    <div>
+                        <div class="text-5xl font-bold text-emerald-700">2018</div>
+                        <div class="text-sm text-gray-600">Established</div>
+                    </div>
+                    <div>
+                        <div class="text-5xl font-bold text-emerald-700">∞</div>
+                        <div class="text-sm text-gray-600">Boxes delivered</div>
+                    </div>
+                </div>
+                <a href="#"
+                    class="inline-flex items-center gap-3 bg-emerald-700 hover:bg-emerald-800 text-white px-8 py-4 rounded-full font-semibold transition-all">Read
+                    Our Story <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section id="how" class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-5xl font-bold text-center mb-16 text-gray-900">3 Steps to Freshness</h2>
+        <div class="grid md:grid-cols-3 gap-12">
+            <div class="text-center">
+                <div
+                    class="w-24 h-24 mx-auto bg-emerald-100 text-emerald-700 rounded-3xl flex items-center justify-center text-4xl font-bold mb-8">
+                    1</div>
+                <h3 class="text-2xl font-bold mb-3">Choose Your Box</h3>
+                <p class="text-gray-600">Pick a size or build your own from our weekly harvest list</p>
+            </div>
+            <div class="text-center">
+                <div
+                    class="w-24 h-24 mx-auto bg-emerald-100 text-emerald-700 rounded-3xl flex items-center justify-center text-4xl font-bold mb-8">
+                    2</div>
+                <h3 class="text-2xl font-bold mb-3">We Pick & Pack</h3>
+                <p class="text-gray-600">Harvested the same morning at Willsgrove Farm</p>
+            </div>
+            <div class="text-center">
+                <div
+                    class="w-24 h-24 mx-auto bg-emerald-100 text-emerald-700 rounded-3xl flex items-center justify-center text-4xl font-bold mb-8">
+                    3</div>
+                <h3 class="text-2xl font-bold mb-3">Delivered Fresh</h3>
+                <p class="text-gray-600">To your door in Bulawayo or Harare • Same-day options</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-24 bg-emerald-900 text-white">
+    <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-5xl font-bold text-center mb-16">What Our Customers Say</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white/10 backdrop-blur p-8 rounded-3xl">
+                <i class="fa-solid fa-quote-left text-4xl text-emerald-300 mb-4"></i>
+                <p class="italic mb-6">"Best produce I've ever had in Zimbabwe. The mangoes are insane and delivery is
+                    always on time!"</p>
+                <div class="font-semibold">— Sarah M., Bulawayo</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur p-8 rounded-3xl">
+                <i class="fa-solid fa-quote-left text-4xl text-emerald-300 mb-4"></i>
+                <p class="italic mb-6">"Switched from the supermarket. Saves me money and everything tastes like it was
+                    picked yesterday."</p>
+                <div class="font-semibold">— Knowledge N., Harare</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur p-8 rounded-3xl">
+                <i class="fa-solid fa-quote-left text-4xl text-emerald-300 mb-4"></i>
+                <p class="italic mb-6">"The Bakery Combo is my weekly treat. Fresh bread + veggies = happy family!"</p>
+                <div class="font-semibold">— Jada D., Bulawayo</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact" class="bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid md:grid-cols-4 gap-12">
+            <div>
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 bg-emerald-700 rounded-xl flex items-center justify-center text-2xl">🌾</div>
+                    <span class="text-2xl font-bold">Willsgrove</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">Cnr. 5th Ave & Fife Street, Bulawayo, Zimbabwe</p>
+                <div class="flex gap-4 text-2xl">
+                    <a href="#" class="text-gray-400 hover:text-emerald-400 transition-colors"><i
+                            class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-emerald-400 transition-colors"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-emerald-400 transition-colors"><i
+                            class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-6">Quick Links</h4>
+                <ul class="space-y-3 text-gray-400">
+                    <li><a href="#boxes" class="hover:text-emerald-400 transition-colors">Shop Boxes</a></li>
+                    <li><a href="#produce" class="hover:text-emerald-400 transition-colors">Fresh Produce</a></li>
+                    <li><a href="#bakery" class="hover:text-emerald-400 transition-colors">Bakery</a></li>
+                    <li><a href="#about" class="hover:text-emerald-400 transition-colors">Our Farm</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-6">Contact</h4>
+                <ul class="space-y-3 text-gray-400">
+                    <li><i class="fa-solid fa-phone mr-2"></i> +263 96 7391</li>
+                    <li><i class="fa-solid fa-envelope mr-2"></i> hello@willsgrove.co.zw</li>
+                    <li><i class="fa-regular fa-clock mr-2"></i> Mon-Sat: 7am - 6pm</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-6">Newsletter</h4>
+                <p class="text-gray-400 text-sm mb-4">Get weekly harvest updates & special offers</p>
+                <div class="flex">
+                    <input type="email" placeholder="Your email"
+                        class="bg-gray-800 text-white px-4 py-3 rounded-l-full flex-1 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    <button
+                        class="bg-emerald-700 hover:bg-emerald-600 px-6 rounded-r-full font-semibold transition-colors">Join</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="border-t border-gray-800 py-8 text-center text-gray-400 text-sm">
+        © 2026 Willsgrove Farm Enterprises • Built with ❤️ for Zimbabwean farmers
+    </div>
+</footer>
+
+<!-- Cart Modal -->
+<div id="cart-modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[9999]">
+    <div class="bg-white w-full max-w-lg rounded-3xl overflow-hidden">
+        <div class="px-8 py-6 border-b flex items-center justify-between">
+            <h3 class="font-bold text-2xl text-gray-900">Your Cart</h3>
+            <button onclick="toggleCart()"
+                class="text-3xl text-gray-400 hover:text-gray-600 transition-colors">×</button>
+        </div>
+        <div id="cart-items" class="p-8 max-h-[400px] overflow-auto min-h-[200px]"></div>
+        <div class="p-8 border-t">
+            <div class="flex justify-between text-lg mb-6">
+                <span class="text-gray-600">Total</span>
+                <span id="cart-total" class="font-bold text-2xl text-emerald-700">$0.00</span>
+            </div>
+            <button onclick="checkout()"
+                class="w-full bg-emerald-700 hover:bg-emerald-800 text-white py-4 rounded-full text-lg font-semibold transition-all">PROCEED
+                TO CHECKOUT</button>
+            <p class="text-center text-sm text-gray-500 mt-4">Free delivery on orders over $50</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    let cart = [];
+
+    function addToCart(id, name, price) {
+        cart.push({ id, name, price });
+        updateCartCount();
+        showToast(`${name} added to cart!`);
+    }
+
+    function addProduceToCart(name, price) {
+        cart.push({ id: Date.now(), name, price });
+        updateCartCount();
+        showToast(`${name} added!`);
+    }
+
+    function quickAddBakery(name, price) {
+        cart.push({ id: Date.now(), name, price });
+        updateCartCount();
+        showToast(`${name} added!`);
+    }
+
+    function updateCartCount() {
+        document.getElementById("cart-count").textContent = cart.length;
+    }
+
+    function toggleCart() {
+        document.getElementById("cart-modal").classList.toggle("hidden");
+        renderCart();
+    }
+
+    function renderCart() {
+        const container = document.getElementById("cart-items");
+        container.innerHTML = "";
+        if (cart.length === 0) {
+            container.innerHTML = '<div class="text-center py-12 text-gray-400"><i class="fa-solid fa-basket-shopping text-5xl mb-4 opacity-30"></i><p>Your cart is empty</p></div>';
+            document.getElementById("cart-total").textContent = "$0.00";
+            return;
+        }
+        let total = 0;
+        cart.forEach((item, index) => {
+            total += item.price;
+            const div = document.createElement("div");
+            div.className = "flex justify-between items-center py-4 border-b last:border-none";
+            div.innerHTML = `<div><div class="font-medium text-gray-900">${item.name}</div><div class="text-sm text-gray-500">$${item.price.toFixed(2)}</div></div><button onclick="removeFromCart(${index})" class="text-red-400 hover:text-red-600 transition-colors"><i class="fa-solid fa-trash"></i></button>`;
+            container.appendChild(div);
+        });
+        document.getElementById("cart-total").textContent = `$${total.toFixed(2)}`;
+    }
+
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCartCount();
+        renderCart();
+    }
+
+    function checkout() {
+        if (cart.length === 0) { alert("Your cart is empty!"); return; }
+        alert("Thank you for your order! We'll contact you shortly to confirm delivery.");
+        cart = [];
+        updateCartCount();
+        toggleCart();
+        showToast("Order placed successfully!");
+    }
+
+    function showToast(message) {
+        const toast = document.createElement("div");
+        toast.style.cssText = "position:fixed;bottom:30px;right:30px;background:#166534;color:white;padding:16px 24px;border-radius:9999px;box-shadow:0 20px 25px -5px rgba(0,0,0,0.2);z-index:10000;display:flex;align-items:center;gap:12px;animation:slideIn 0.3s ease;";
+        toast.innerHTML = `<i class="fa-solid fa-check-circle text-xl"></i><span class="font-medium">${message}</span>`;
+        document.body.appendChild(toast);
+        setTimeout(() => { toast.style.transition = "all 0.3s ease"; toast.style.opacity = "0"; toast.style.transform = "translateY(20px)"; setTimeout(() => toast.remove(), 300); }, 2800);
+    }
+
+    function toggleMobileMenu() {
+        document.getElementById("mobile-menu").classList.toggle("hidden");
+    }
+
+    function filterProduce(cat) {
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+            btn.style.backgroundColor = '';
+            btn.style.color = '';
+            btn.style.borderColor = '';
+        });
+        const activeBtn = document.querySelector(`[data-cat="${cat}"]`);
+        if (activeBtn) activeBtn.classList.add('active');
+
+        const items = document.querySelectorAll('.produce-item');
+        let count = 0;
+        items.forEach(item => {
+            const show = cat === 'all' || item.dataset.cat === cat;
+            item.style.display = show ? '' : 'none';
+            if (show) count++;
+        });
+        const labels = { all: 'all produce', fruit: 'fruits', vegetable: 'vegetables', herb: 'herbs & spices', legume: 'legumes & nuts' };
+        document.getElementById('produce-count').innerHTML = `Showing <span class="font-semibold text-emerald-700">${count} items</span> in ${labels[cat]} — click any card to add to cart`;
+    }
+
+    document.addEventListener("keydown", e => {
+        if (e.key === "Escape" && !document.getElementById("cart-modal").classList.contains("hidden")) toggleCart();
+    });
+
+    document.addEventListener("DOMContentLoaded", updateCartCount);
+</script>
+</body>
+
+</html>
